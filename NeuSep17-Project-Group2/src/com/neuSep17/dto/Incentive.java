@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class Incentive {
 	private String ID;
+	private String dealerID;
 	private String title;
 	private String startDate; //format should be "MM-DD-YYY"
 	private String endDate;//format should be "MM-DD-YYY"
@@ -15,9 +16,9 @@ public class Incentive {
 	private  ArrayList<String> discountCriteria = new ArrayList<>();
 	
 	public Incentive() {}
-	public Incentive(String ID,String title, String startDate, String endDate, String description, 
+	public Incentive(String ID, String dealerID, String title, String startDate, String endDate, String description,
 			float cashValue, ArrayList<String> discountCriteria) {
-		this.ID =ID; this.title =title; this.startDate=startDate; 
+		this.ID =ID; this.dealerID = dealerID; this.title =title; this.startDate=startDate;
 		this.endDate=endDate; this.description=description; this.cashValue=cashValue; 
 		this.discountCriteria=discountCriteria;
 	}
@@ -25,7 +26,8 @@ public class Incentive {
 	public void setID(String id) {
 		ID=id;
 	}
-	public void setTitle(String t) {
+    public void setDealerID(String dealerID) { this.dealerID = dealerID; }
+    public void setTitle(String t) {
 		title=t;
 	}
 	public void setStartDate(String sD) {
@@ -47,7 +49,8 @@ public class Incentive {
 	public String getID() {
 		return ID;
 	}
-	public String getTitle() {
+    public String getDealerID() { return dealerID; }
+    public String getTitle() {
 		return title;
 	}
 	public String getStartDate() {

@@ -64,8 +64,38 @@ public class FileReading {
         }
         return vs;
     }
+// This function is used for retrieving data from incentive data file -- Zezhu
+	public static  ArrayList<Incentive> getAllIncentives(File file){
+		//Initialize a arraylist to store incentive objects
+		ArrayList<Incentive> is = new ArrayList<>();
+		//set delimiter as '~'
+		Pattern pattern = Pattern.compile("~");
+		try (BufferedReader in = new BufferedReader(new FileReader(file));) {
+			String line = in.readLine(); // skip the first line
+			while((line = in.readLine()) != null){
+				String[] x = pattern.split(line);
+                String[] criterias = x[7].split("\\+"); // create a string array to hold the discount criterias
+                ArrayList<String> dCriteria = new ArrayList<>(); //discount criteria arrayList
+                for(int i = 0; i < criterias.length; i++)
+                    dCriteria.add(criterias[i]);
+                //sync the record values with object
+                Incentive incent = new Incentive(x[0], x[1], x[2], x[3], x[4], x[5], Float.parseFloat(x[6]), dCriteria);
+                is.add(incent);
+			}
+		} catch (FileNotFoundException f){
+			f.printStackTrace();
+		} catch (IOException i){
+			i.printStackTrace();
+		}
+
+		//return an array list of incentives here
+        return is;
+	} //end of getAllIncentives
 
 }
+
+
+
 
 /*
 public void read(File file) throws IOException {
