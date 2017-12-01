@@ -22,6 +22,17 @@ public class Incentive {
 		this.endDate=endDate; this.description=description; this.cashValue=cashValue; 
 		this.discountCriteria=discountCriteria;
 	}
+
+	public void updateIncentive(Incentive incentive) {
+	    this.ID = incentive.getID();
+        this.dealerID = incentive.getDealerID();
+        this.title = incentive.getTitle();
+        this.startDate = incentive.getStartDate();
+        this.endDate = incentive.getEndDate();
+        this.description = incentive.getDescription();
+        this.cashValue = incentive.getCashValue();
+        this.discountCriteria = incentive.getDiscountCriteria();
+    }
 	
 	public void setID(String id) {
 		ID=id;
@@ -45,7 +56,7 @@ public class Incentive {
 	public void setDiscountCriteria(ArrayList<String> dC) {
 		discountCriteria=dC;
 	}
-	
+
 	public String getID() {
 		return ID;
 	}
@@ -68,4 +79,18 @@ public class Incentive {
 	public ArrayList<String> getDiscountCriteria() {
 		return discountCriteria;
 	}
+
+	@Override
+    public String toString(){
+	    //create a string array to store criterias
+	    StringBuilder sb = new StringBuilder();
+        //for loop to form the stringBuilder
+        for(String s : discountCriteria){
+            sb.append(s);
+            sb.append("+");
+        }
+        sb.deleteCharAt(sb.length()-1); //delete the last + sign
+
+	    return String.format("%s~%s~%s~%s~%s~%s~%.2f~%s\n",this.ID, this.dealerID, this.title, this.startDate, this.endDate, this.description, this.getCashValue(),sb.toString());
+    }
 }

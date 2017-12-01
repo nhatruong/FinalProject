@@ -9,13 +9,13 @@ import java.util.ArrayList;
 public interface IIncentiveManager {
 
     //get incentives for a dealer
-    ArrayList<Incentive> getIncentivesForDealer(Dealer dealer);
+    ArrayList<Incentive> getIncentivesForDealer(String dealerID);
     //get a specific incentive by passing a unique incentive id
     Incentive getAIncentive(String incentiveID);
     //add a specific incentive
-    boolean addAIncentive(String dealerID, Incentive incentive);
+    boolean addAIncentive(Incentive incentive);
     //update a specific incentive
-    boolean updateAIncentive(String dealerID, Incentive incentive);
+    boolean updateAIncentive(Incentive incentive);
     //delete a specific incentive
-    boolean deleteAIncentive(String dealerID, Incentive incentive);
+    boolean deleteAIncentive(String incentiveID);
 }

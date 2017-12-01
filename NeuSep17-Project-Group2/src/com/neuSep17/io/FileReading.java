@@ -64,13 +64,15 @@ public class FileReading {
         }
         return vs;
     }
+
+
 // This function is used for retrieving data from incentive data file -- Zezhu
-	public static  ArrayList<Incentive> getAllIncentives(File file){
+	public static  ArrayList<Incentive> getAllIncentives(){
 		//Initialize a arraylist to store incentive objects
 		ArrayList<Incentive> is = new ArrayList<>();
 		//set delimiter as '~'
 		Pattern pattern = Pattern.compile("~");
-		try (BufferedReader in = new BufferedReader(new FileReader(file));) {
+		try (BufferedReader in = new BufferedReader(new FileReader("/Users/jinzezhu/Desktop/NEU_Courses/INFO-5100/FinalProject/NeuSep17-Project-Group2/data/incentives"));) {
 			String line = in.readLine(); // skip the first line
 			while((line = in.readLine()) != null){
 				String[] x = pattern.split(line);
