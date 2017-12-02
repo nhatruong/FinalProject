@@ -95,7 +95,7 @@ public class Incentive implements Comparable<Incentive> {
 	
 	
 	
-	//Call this  method to sort --Nhat
+	//Call this  method to sort --Nhat T.
 	public void sortBy(ArrayList<Incentive> incentives, String sortingField) {
      	
      	for(Incentive incentive : incentives) {

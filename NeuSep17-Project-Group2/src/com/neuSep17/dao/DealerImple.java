@@ -16,13 +16,6 @@ import com.neuSep17.io.FileWriting;
 public class DealerImple implements IDealerManager {
 	Map<String, Dealer> map;
 
-	public static void main(String[] args) throws IOException{
-		DealerImple test = new DealerImple();
-		//test.addDealer(new Dealer("haha", "haha", "www.sds.com", "xrc19950707@126.com", "2067306912"));
-		//test.updateDealer(new Dealer("haha", "haha", "www.12345.com" , "rychdsa@gmail.com", "23451213"));
-		test.deleteDealer("haha");
-	}
-
 	public DealerImple() throws IOException {
 		DealerFileReading reading = new DealerFileReading(new File("data/dealers"));
 		map = reading.loading();

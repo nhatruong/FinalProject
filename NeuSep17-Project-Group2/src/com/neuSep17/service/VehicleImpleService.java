@@ -63,7 +63,7 @@ public class VehicleImpleService {
 	}
 	   
 	/* The sortingField must be one of the instance variables of the Vehicle class
-	 * (category, year, make, etc...)
+	 * (category, year, make, etc...). Case insensitive
 	 * 
 	 * IllegalArgumentException: if the sortingField does not match the Vehicle instance field
 	 *        
