@@ -73,7 +73,7 @@ public class FileReading {
 		ArrayList<Incentive> is = new ArrayList<>();
 		//set delimiter as '~'
 		Pattern pattern = Pattern.compile("~");
-		try (BufferedReader in = new BufferedReader(new FileReader("/Users/jinzezhu/Desktop/NEU_Courses/INFO-5100/FinalProject/NeuSep17-Project-Group2/data/incentives"))) {
+		try (BufferedReader in = new BufferedReader(new FileReader("data/incentives"))) {
 			String line = in.readLine(); // skip the first line
 			while((line = in.readLine()) != null){
 				String[] x = pattern.split(line);

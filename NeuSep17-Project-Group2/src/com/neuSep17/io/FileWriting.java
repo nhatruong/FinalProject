@@ -20,7 +20,9 @@ public class FileWriting {
     // This function is used for write data to incentive data file -- Zezhu
     public static void writeIncentiveToFile(ArrayList<Incentive> incentives){
         try{
-            FileWriter fw = new FileWriter(new File("/Users/jinzezhu/Desktop/NEU_Courses/INFO-5100/FinalProject/NeuSep17-Project-Group2/data/incentives"));
+            File dfile = new File("datax");
+            System.out.println(dfile.exists()? "yes" : "no");
+            FileWriter fw = new FileWriter(new File("data/incentives"));
             //write the first line
             fw.append("id~dealerId~title~startDate~endDate~description~cashValue~discountCriteria\n");
             for(Incentive i : incentives){
@@ -36,7 +38,7 @@ public class FileWriting {
     //This function is used for appending an new incentive to the data file -- Zezhu
     public static void writeAIncentiveToFile(Incentive incentive){
 	    try{
-	        FileWriter fw = new FileWriter(new File("/Users/jinzezhu/Desktop/NEU_Courses/INFO-5100/FinalProject/NeuSep17-Project-Group2/data/incentives"), true);
+	        FileWriter fw = new FileWriter(new File("data/incentives"), true);
 	        //append the new incentive to the data file
             fw.append(incentive.toString());
             fw.close();
