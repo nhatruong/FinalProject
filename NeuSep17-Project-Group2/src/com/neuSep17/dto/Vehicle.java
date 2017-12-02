@@ -2,6 +2,7 @@ package com.neuSep17.dto;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.regex.Pattern;
 import java.lang.reflect.Field;
 
@@ -18,10 +19,20 @@ public class Vehicle implements Comparable<Vehicle> {
         private String bodyType;
         private double price;
         private URL photoUrl;
-       
-        
-        
-        private String sortingField;
+
+    private String vin;
+    private String entertainment;
+    private String interiorColor;
+    private String exteriorColor;
+    private String fuelType;
+    private String engine;
+    private String transmission;
+    private String battery;
+    private ArrayList<String> optionalFeatures;
+
+
+
+    private String sortingField;
        
         
         //Use this constructor when wants to search all search vehicle by category, year..., no id needed
@@ -107,6 +118,57 @@ public class Vehicle implements Comparable<Vehicle> {
         public URL getPhotoURL() {
         	return photoUrl;
         }
+
+    public String getVin() {
+        return vin;
+    }
+    public String getEntertainment() {
+        return entertainment;
+    }
+    public String getInteriorColor() {
+        return interiorColor;
+    }
+    public String getExteriorColor() {
+        return exteriorColor;
+    }
+    public String getFuelType() {
+        return fuelType;
+    }
+    public String getEngine() {
+        return engine;
+    }
+    public String getTransmission() {
+        return transmission;
+    }
+    public String getBattery() {
+        return battery;
+    }
+
+
+    public void setVin(String vin) {
+        this.vin = vin;
+    }
+    public void setEntertainment(String entertainment) {
+        this.entertainment = entertainment;
+    }
+    public void setInteriorColor(String interiorColor) {
+        this.interiorColor = interiorColor;
+    }
+    public void setExteriorColor(String exteriorColor) {
+        this.exteriorColor = exteriorColor;
+    }
+    public void setFuelType(String fuelType) {
+        this.fuelType = fuelType;
+    }
+    public void setEngine(String engine) {
+        this.engine = engine;
+    }
+    public void setTransmission(String transmission) {
+        this.transmission = transmission;
+    }
+    public void setBattery(String battery) {
+        this.battery = battery;
+    }
         
         ////override this method from the Comparable interface --Nhat T.
         @Override

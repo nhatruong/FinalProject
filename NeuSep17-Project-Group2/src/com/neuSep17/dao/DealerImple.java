@@ -16,6 +16,7 @@ import com.neuSep17.io.FileWriting;
 public class DealerImple implements IDealerManager {
 	Map<String, Dealer> map;
 
+
 	public DealerImple() throws IOException {
 		DealerFileReading reading = new DealerFileReading(new File("data/dealers"));
 		map = reading.loading();
