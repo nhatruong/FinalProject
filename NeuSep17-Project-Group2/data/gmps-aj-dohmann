@@ -1,4 +1,4 @@
-id~webId~category~year~make~model~trim~type~price~photo
+id~webId~category~year~make~model~trim~type~price~photo~V
 2228104413~gmps-aj-dohmann~new~2014~Cadillac~CTS Sedan~3.6L V6 AWD Luxury~CAR~57620.0~http://inventory-dmg.assets-cdk.com/5/1/7/13411480715x90.jpg
 2415756673~gmps-aj-dohmann~new~2015~Cadillac~ATS Sedan~2.5L I4 RWD Luxury~CAR~39680.0~http://inventory-dmg.assets-cdk.com/8/6/6/13411480668x90.jpg
 2415757183~gmps-aj-dohmann~new~2015~Cadillac~ATS Sedan~2.5L I4 RWD Luxury~CAR~40280.0~http://inventory-dmg.assets-cdk.com/4/6/5/13411476564x90.jpg
@@ -203,3 +203,5 @@ id~webId~category~year~make~model~trim~type~price~photo
 2793186543~gmps-aj-dohmann~used~2013~Toyota~Highlander~FWD 4dr V6 (Natl)~SUV~29995.0~http://inventory-dmg.assets-cdk.com/9/5/2/13411481259x90.jpg
 2957917133~gmps-aj-dohmann~used~2015~Toyota~Tacoma~2WD Double Cab Short Bed V6 Automatic PreRunner (GS)~TRUCK~27990.0~http://inventory-dmg.assets-cdk.com/6/1/0/14211029016x90.jpg
 2855424213~gmps-aj-dohmann~used~2016~Toyota~Tundra 2WD Truck~2WD CrewMax Short Bed 5.7L FFV SR5 (SE)~TRUCK~37990.0~http://inventory-dmg.assets-cdk.com/3/1/3/13512824313x90.jpg
+null~null~null~0~null~null~null~bodytye~0.0~null
+nhat~null~null~0~make~null~null~bodytye~0.0~null
