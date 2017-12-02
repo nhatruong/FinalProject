@@ -38,7 +38,7 @@ public class IncentiveImple implements IIncentiveManager {
         //for loop to get that specific incentive to update
         for(Incentive i : allIncentives){
             if(i.getID().equals(incentive.getID())) {
-                System.out.println("Found one matched!!!");
+//                System.out.println("Found one matched!!!");
                 i.updateIncentive(incentive);
                 isSuccess = true;
             }
@@ -56,10 +56,8 @@ public class IncentiveImple implements IIncentiveManager {
         //check if incentive is null
         if(incentive == null)
             return false;
-        //add new incentive to all incentives
-        allIncentives.add(incentive);
-        //overwrite the list of incentives to data file
-        FileWriting.writeIncentiveToFile(allIncentives);
+        //add new incentive to data file
+        FileWriting.writeAIncentiveToFile(incentive);
         //return true for showing adding process succeed
         return true;
     }
@@ -95,7 +93,8 @@ public class IncentiveImple implements IIncentiveManager {
     //testing main function starts here
     public static void main(String[] args){
         IncentiveImple test = new IncentiveImple();
-        //testing for get incentives for a dealer
+
+//        testing for get incentives for a dealer
         ArrayList<Incentive> incents;
         incents = test.getIncentivesForDealer("gmps-brown-wood");
         for (Incentive i : incents)
@@ -110,11 +109,11 @@ public class IncentiveImple implements IIncentiveManager {
         //update testing ends here
 
         //testing delete function
-        test.deleteAIncentive("002");
+        //test.deleteAIncentive("002");
         //delete update ends here
 
         //testing add function
-        Incentive incentive2 = new Incentive("005","gmps-bresee","Labor Day","07/01/2016","08/02/2019","big deal for Audi", 1100, dCriteria);
+        Incentive incentive2 = new Incentive("006","gmps-bresee","Labor Day","07/01/2016","08/02/2019","big deal for Audi", 1100, dCriteria);
         test.addAIncentive(incentive2);
         //add testing ends here
     } //testing main function ends here

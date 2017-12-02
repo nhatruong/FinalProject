@@ -32,4 +32,16 @@ public class FileWriting {
             i.printStackTrace();
         }
     }
+
+    //This function is used for appending an new incentive to the data file -- Zezhu
+    public static void writeAIncentiveToFile(Incentive incentive){
+	    try{
+	        FileWriter fw = new FileWriter(new File("/Users/jinzezhu/Desktop/NEU_Courses/INFO-5100/FinalProject/NeuSep17-Project-Group2/data/incentives"), true);
+	        //append the new incentive to the data file
+            fw.append(incentive.toString());
+            fw.close();
+        } catch (IOException i){
+	        i.printStackTrace();
+        }
+    }
 }
