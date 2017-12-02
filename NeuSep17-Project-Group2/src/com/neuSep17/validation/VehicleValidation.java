@@ -3,8 +3,9 @@ package com.neuSep17.validation;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.HashMap;
+import java.lang.reflect.Field;
 
+import com.neuSep17.dto.Vehicle;
 import com.neuSep17.io.FileReading;
 
 public class VehicleValidation {
@@ -17,13 +18,18 @@ public class VehicleValidation {
 	public void checkVehicleID(String vehicleID) throws IOException {
 		fileReading.checkID(vehicleID);			
 	}
-	//update
-	public static void checkHashMap(HashMap<String, String> hashMap) {
-		if(hashMap == null) {
-			throw new NullPointerException("List is null");
+	//check sortingField
+	public static void checkSortingField(Vehicle v, String sortingField){
+		int count=0;
+		Field[] fields = v.getClass().getDeclaredFields();
+		for(Field field :fields) {
+			if(field.getName().equalsIgnoreCase(sortingField)) {
+				count++;
+			}
 		}
-		if(hashMap.isEmpty()) {
-			throw new IllegalStateException("Empty list");
-		}		
+		if(count ==0) {
+			throw new IllegalArgumentException("Invalid sorting field");
+		}
+		
 	}
 }

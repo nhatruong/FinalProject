@@ -2,14 +2,8 @@ package com.neuSep17.dto;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.time.Year;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.regex.Pattern;
-
-
-
-import java.io.IOException;
 import java.lang.reflect.Field;
 
 
@@ -25,10 +19,21 @@ public class Vehicle implements Comparable<Vehicle> {
         private String bodyType;
         private double price;
         private URL photoUrl;
+
+    private String vin;
+    private String entertainment;
+    private String interiorColor;
+    private String exteriorColor;
+    private String fuelType;
+    private String engine;
+    private String transmission;
+    private String battery;
+    private ArrayList<String> optionalFeatures;
+
+
+
+    private String sortingField;
        
-        
-        
-        private String sortingField;
         
         //Use this constructor when wants to search all search vehicle by category, year..., no id needed
         public Vehicle() {
@@ -113,22 +118,78 @@ public class Vehicle implements Comparable<Vehicle> {
         public URL getPhotoURL() {
         	return photoUrl;
         }
+
+    public String getVin() {
+        return vin;
+    }
+    public String getEntertainment() {
+        return entertainment;
+    }
+    public String getInteriorColor() {
+        return interiorColor;
+    }
+    public String getExteriorColor() {
+        return exteriorColor;
+    }
+    public String getFuelType() {
+        return fuelType;
+    }
+    public String getEngine() {
+        return engine;
+    }
+    public String getTransmission() {
+        return transmission;
+    }
+    public String getBattery() {
+        return battery;
+    }
+
+
+    public void setVin(String vin) {
+        this.vin = vin;
+    }
+    public void setEntertainment(String entertainment) {
+        this.entertainment = entertainment;
+    }
+    public void setInteriorColor(String interiorColor) {
+        this.interiorColor = interiorColor;
+    }
+    public void setExteriorColor(String exteriorColor) {
+        this.exteriorColor = exteriorColor;
+    }
+    public void setFuelType(String fuelType) {
+        this.fuelType = fuelType;
+    }
+    public void setEngine(String engine) {
+        this.engine = engine;
+    }
+    public void setTransmission(String transmission) {
+        this.transmission = transmission;
+    }
+    public void setBattery(String battery) {
+        this.battery = battery;
+    }
         
+        ////override this method from the Comparable interface --Nhat T.
         @Override
         public int compareTo(Vehicle v) { 
+        	
         	String s1 = getValueToSort(this);
         	String s2 = getValueToSort(v);
-        	String decimalPattern = "([0-9]*)\\.([0-9]*)";          	  
-        	if(Pattern.matches(decimalPattern, s1)) {
-        		return (int) (Double.parseDouble(s1) - Double.parseDouble(s2));
+        	String decimalPattern = "([0-9]*)\\.([0-9]*)";
+        	String integerPattern = ("^\\d+$");
+        	if(Pattern.matches(decimalPattern, s1)) {        	
+        		return (int) (Double.parseDouble(s1) - Double.parseDouble(s2)); 
         	}
-        	
+        	else if(Pattern.matches(integerPattern, s1)) {        		
+        		return (int) (Integer.parseInt(s1) - Integer.parseInt(s2));
+        	}
         	else {
-        		return s1.compareToIgnoreCase(s2); 
-        	}
-        	       	    	
+        		return s1.compareToIgnoreCase(s2);        	
+        	}        	       	    	
         }
         
+      //Used by the CompareTo method --Nhat T.
         private String getValueToSort(Vehicle v) {
         	String valueToCompare="";
         	Field[] fields = v.getClass().getDeclaredFields();
@@ -145,6 +206,9 @@ public class Vehicle implements Comparable<Vehicle> {
         				else if(f.getType() ==double.class) {
         					valueToCompare = new Double((Double)f.get(v)).toString();
         				}
+        				else if(f.getType()==Category.class) { 
+        					valueToCompare = ((Category)f.get(v)).toString();
+        				} 
         				else {
         					valueToCompare= (String)f.get(v);
         				}
@@ -152,10 +216,8 @@ public class Vehicle implements Comparable<Vehicle> {
 					} catch (IllegalArgumentException | IllegalAccessException e) {						
 						e.printStackTrace();
 					}
-        			
-        			break;
         		}
         	}
         	return valueToCompare;
-        }  
+        }    
 }

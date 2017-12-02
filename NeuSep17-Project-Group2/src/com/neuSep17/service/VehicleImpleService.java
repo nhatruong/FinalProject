@@ -1,10 +1,15 @@
 package com.neuSep17.service;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
 import com.neuSep17.dao.VehicleImple;
 
 import com.neuSep17.dto.Dealer;
 import com.neuSep17.dto.Inventory;
 import com.neuSep17.dto.Vehicle;
+import com.neuSep17.validation.VehicleValidation;
 
 
 /*********************************************************
@@ -22,6 +27,7 @@ public class VehicleImpleService {
 	private Dealer dealer;
 	private VehicleImple vehicleImple;
 	
+	public VehicleImpleService() {};
 	public VehicleImpleService(Dealer d) {
 		this.dealer =d;
 		vehicleImple = new VehicleImple();
@@ -48,13 +54,26 @@ public class VehicleImpleService {
 		return vehicleImple.addVehicle(dealer.getId(), v);
 	}	
 	
-	public boolean updateVehicle(String dealerID, Vehicle v) {
-		
+	public boolean updateVehicle(String dealerID, Vehicle v) {		
 		return vehicleImple.updateVehicle(dealer.getId(), v);
 	}
 	
 	public boolean deleteVehicle(String vehicleID) {
 		return vehicleImple.deleteVehicle(dealer.getId(), vehicleID);
 	}
-	
+	   
+	/* The sortingField must be one of the instance variables of the Vehicle class
+	 * (category, year, make, etc...). Case insensitive
+	 * 
+	 * IllegalArgumentException: if the sortingField does not match the Vehicle instance field
+	 *        
+	 */
+	// Nhat T.
+    public void sortBy(Collection<Vehicle> v, String sortingField) {    	
+    	for(Vehicle vehicle : v) {
+    		VehicleValidation.checkSortingField(vehicle, sortingField);
+    		vehicle.setSortingField(sortingField);
+    	}
+    	Collections.sort((List<Vehicle>) v); 
+    }
 }
