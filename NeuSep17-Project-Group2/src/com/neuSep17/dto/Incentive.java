@@ -95,7 +95,7 @@ public class Incentive implements Comparable<Incentive> {
 	
 	
 	
-	//Call this  method to sort
+	//Call this  method to sort --Nhat
 	public void sortBy(ArrayList<Incentive> incentives, String sortingField) {
      	
      	for(Incentive incentive : incentives) {
@@ -104,18 +104,16 @@ public class Incentive implements Comparable<Incentive> {
      	Collections.sort(incentives); 
      }
 	
-	
+	//override this method from the Comparable interface --Nhat T.
 	 @Override
      public int compareTo(Incentive v) { 
      	String s1 = getValueToSort(this);
      	String s2 = getValueToSort(v);
      	String decimalPattern = "([0-9]*)\\.([0-9]*)";
-     	String datePattern ="([0-9]{2})-([0-9]{2})-([0-9]{4})"; // "([0-9]{4})-([0-9]{2})-([0-9]{2})"
+     	String datePattern ="([0-9]{2})-([0-9]{2})-([0-9]{4})";
      	
      	SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
-     	
-     	
-     	
+     	     	
      	if(Pattern.matches(decimalPattern, s1)) {     	
      		return (int) (Double.parseDouble(s1) - Double.parseDouble(s2));          		
      	}
@@ -136,6 +134,7 @@ public class Incentive implements Comparable<Incentive> {
      	}     	       	    	
      }
      
+	 //Used by the CompareTo method --Nhat T.
      private String getValueToSort(Incentive c) {
      	String valueToCompare="";
      	Field[] fields = c.getClass().getDeclaredFields();
@@ -166,7 +165,7 @@ public class Incentive implements Comparable<Incentive> {
 	
 	@Override
     public String toString(){
-	    //create a string array to store criterias
+	    //create a string array to store criteria
 	    StringBuilder sb = new StringBuilder();
         //for loop to form the stringBuilder
         for(String s : discountCriteria){

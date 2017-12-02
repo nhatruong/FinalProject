@@ -107,7 +107,8 @@ public class Vehicle implements Comparable<Vehicle> {
         public URL getPhotoURL() {
         	return photoUrl;
         }
-     
+        
+        ////override this method from the Comparable interface --Nhat T.
         @Override
         public int compareTo(Vehicle v) { 
         	
@@ -126,6 +127,7 @@ public class Vehicle implements Comparable<Vehicle> {
         	}        	       	    	
         }
         
+      //Used by the CompareTo method --Nhat T.
         private String getValueToSort(Vehicle v) {
         	String valueToCompare="";
         	Field[] fields = v.getClass().getDeclaredFields();

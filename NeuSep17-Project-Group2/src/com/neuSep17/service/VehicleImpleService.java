@@ -68,6 +68,7 @@ public class VehicleImpleService {
 	 * IllegalArgumentException: if the sortingField does not match the Vehicle instance field
 	 *        
 	 */
+	// Nhat T.
     public void sortBy(Collection<Vehicle> v, String sortingField) {    	
     	for(Vehicle vehicle : v) {
     		VehicleValidation.checkSortingField(vehicle, sortingField);
