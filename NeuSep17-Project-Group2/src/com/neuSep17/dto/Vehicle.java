@@ -2,14 +2,7 @@ package com.neuSep17.dto;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.time.Year;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.regex.Pattern;
-
-
-
-import java.io.IOException;
 import java.lang.reflect.Field;
 
 
@@ -29,6 +22,7 @@ public class Vehicle implements Comparable<Vehicle> {
         
         
         private String sortingField;
+       
         
         //Use this constructor when wants to search all search vehicle by category, year..., no id needed
         public Vehicle() {
@@ -113,20 +107,23 @@ public class Vehicle implements Comparable<Vehicle> {
         public URL getPhotoURL() {
         	return photoUrl;
         }
-        
+     
         @Override
         public int compareTo(Vehicle v) { 
+        	
         	String s1 = getValueToSort(this);
         	String s2 = getValueToSort(v);
-        	String decimalPattern = "([0-9]*)\\.([0-9]*)";          	  
-        	if(Pattern.matches(decimalPattern, s1)) {
-        		return (int) (Double.parseDouble(s1) - Double.parseDouble(s2));
+        	String decimalPattern = "([0-9]*)\\.([0-9]*)";
+        	String integerPattern = ("^\\d+$");
+        	if(Pattern.matches(decimalPattern, s1)) {        	
+        		return (int) (Double.parseDouble(s1) - Double.parseDouble(s2)); 
         	}
-        	
+        	else if(Pattern.matches(integerPattern, s1)) {        		
+        		return (int) (Integer.parseInt(s1) - Integer.parseInt(s2));
+        	}
         	else {
-        		return s1.compareToIgnoreCase(s2); 
-        	}
-        	       	    	
+        		return s1.compareToIgnoreCase(s2);        	
+        	}        	       	    	
         }
         
         private String getValueToSort(Vehicle v) {
@@ -145,6 +142,9 @@ public class Vehicle implements Comparable<Vehicle> {
         				else if(f.getType() ==double.class) {
         					valueToCompare = new Double((Double)f.get(v)).toString();
         				}
+        				else if(f.getType()==Category.class) { 
+        					valueToCompare = ((Category)f.get(v)).toString();
+        				} 
         				else {
         					valueToCompare= (String)f.get(v);
         				}
@@ -152,10 +152,8 @@ public class Vehicle implements Comparable<Vehicle> {
 					} catch (IllegalArgumentException | IllegalAccessException e) {						
 						e.printStackTrace();
 					}
-        			
-        			break;
         		}
         	}
         	return valueToCompare;
-        }  
+        }    
 }
